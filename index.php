@@ -1,45 +1,39 @@
 <?
-//Задание 1
 header('Content-type: text/html; charset=utf-8');
 
-$name='Влад';
-$age=21;
-
-echo 'Меня зовут '.$name.' <br />';
-echo 'Мне '.$age.' год <br />';
-
-?>
-
-<?
-//Задание 2
-define('CONSTANT', 'Владимир');
-echo CONSTANT;
-
-?>
-
-<?
-//Задание 3
-echo '<br />';
-$book = array('title'=>'"Java for dummies"', 'author'=>'unknown', 'pages'=>'600');
-echo 'Недавно я прочитал книгу '.$book['title'].' , автор которой '.$book['author'].' и в которой около '.$book['pages'].' страниц';
-
-?>
-
-<?
-//Задание 4
-echo '<br />';
-
-$book1 = array(
-    "title1" => "Зов ктулху",
-    "author1" => "Говард Лафвркрафт",
-    "pages1" => 44
+$date = array(rand(1,time()), //создем массив date с юниксовыми метками
+    rand(1,time()),
+    rand(1,time()),
+    rand(1,time()),
+    rand(1,time())
     );
-$book2 = array(
-    "title2" => "Халявы нет:начало пути",
-    "author2" => "Амиран Сардаров",
-    "pages2" => 114
-    );
-$book = array($book1,$book2);
-echo 'Недавно я прочитал книги '.$book[0]['title1'].' и '.$book[1]['title2'].', написанные соответственно авторами '.$book[0]['author1'].' и '.$book[1]['author2'].', я осилил в сумме '.($book[0]['pages1']+$book[1]['pages2']).' страницы, что вполне ожидаемо';
 
-?>
+echo "Наименьший день ".min(date('d', $date[0]),
+    date('d', $date[1]),
+    date('d', $date[2]),
+    date('d', $date[3]),
+    date('d', $date[4])
+    )."<br/>"; // опредлеляем и выводим наиемньший день
+
+echo "Наибольший месяц ".max(date('m', $date[0]),
+    date('m', $date[1]),
+    date('m', $date[2]),
+    date('m', $date[3]),
+    date('m', $date[4])
+    )."<br/>"; // опредлеляем и выводим наибольший Месяц
+
+    sort($date);
+    print_r($date);
+
+    echo "<br/>";
+    $selected = array_slice($date, -1, 1);
+    echo $selected.  date(' d.m.Y, H:i:s'), "<br/>";
+    
+    echo date_default_timezone_set('America/New_York');
+    echo date_default_timezone_get();
+    
+    
+
+    
+    ?>
+
